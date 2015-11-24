@@ -1,0 +1,11 @@
+#sortLabel{
+  position:relative;
+  left:620px;
+}
+.table-bordered{
+  margin-top: 10px;
+}
+.dumbSpan{
+  position: relative;
+  display: inline;
+}

@@ -1,0 +1,79 @@
+
+
+<div class="container">
+
+  <span>
+    Search by category:
+    <select name="Sort by Price" id="sortPrice" ng-repeat="item in categoryArr">
+      <option value=""></option>
+      <option value="">Lowest</option>
+    </select>
+  </span>
+  <span>
+    Search by name:
+    <input type="text" ng-model="searchText">
+  </span>
+  <table class="table table-bordered">
+    <thead>
+      <th class="col-xs-2">Tea</th>
+      <th class="col-xs-10">Information
+        <label for="sortPrice" id="sortLabel">Sort by Price</label>
+        <select class="pull-right" name="Sort by Price" id="sortPrice">
+          <option value="highest">Highest</option>
+          <option value="lowest">Lowest</option>
+        </select>
+      </th>
+    </thead>
+    <tr ng-repeat="item in itemData | filter:searchText">
+      <td><img ng-src="{{item.imageUrl}}" alt=""></td>
+      <td>
+        <div class="row">
+          <div class="col-xs-8">
+            <h3>{{item.name}}</h3>
+            <p><strong>Price:</strong>&nbsp;{{item.price | price}}</p>
+            <p><strong>Caffeine Scale:</strong>&nbsp;{{item.caffeineScale}}</p>
+            <p><strong>Ingredients:</strong>&nbsp;{{item.ingredients}}</p>
+            <p><strong>Rating:</strong>&nbsp;{{item.rating}}</p>
+            <p><strong>In Stock:</strong>&nbsp;{{item.inStock | inStock}}</p>
+            <strong>Categories:</strong>
+            <ul ng-repeat="item in item.categories">
+              <li>{{item}}</li>
+            </ul>    
+          </div>
+          <div class="col-xs-4 dumbSpan">
+            
+            <span>
+              <h3>Quantity:
+            </span>
+            <span>
+              <select name="quantity" id="itemQuantity">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </span>
+            <span class="btn btn-warning">Add to Cart</span>
+            </h3>
+
+          </div>
+        </div>
+        
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- <p>{{pokemon.name}}</p>
+First ability: {{pokemon.abilities[0].name}}<br>
+{{pokemon.moves[0].description}}
+<img ng-src="{{'http://pokeapi.co' + image}}" alt="Pokemon">
+ -->

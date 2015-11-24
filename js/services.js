@@ -8,20 +8,31 @@ app.service("teaData", ['$http', function($http) {
   return {
     getData: function() {
       var itemData;
+      var categoryArr = [];
       // console.log(itemData)
       // var fullUrl = baseUrl;
-      return $http.get('http://localhost:8000/items.json').then(function(baseData) {
-        itemData = baseData.data;
+      return $http.get('http://localhost:8000/items.json').then(function(itemData) {
+        itemData = itemData.data;
         console.log(itemData);
         return itemData;
-        // debugger
-        // .success(function(data, status, headers, config) {
+      }).then(function(itemData){
+        for(var i=0; i<itemData.length; i++){
+          for(var j=0; j<itemData[i].categories.length; j++){
+            
+            categoryArr.push(itemData[i].categories[j]);
+            console.log(categoryArr);
+          }
+        }
+        uniqueArray = categoryArr.filter(function(item, pos) {
+          return categoryArr.indexOf(item) == pos;
+        });
+        return uniqueArray;
+        
+      });
+        // itemData.categories = categoryData.data;
 
-        //          console.log(data);
-        //      })
-        //      .error(function(data, status, headers, config) {
-        //          console.log(status);
-        //      });
+        
+      
         
       //   var uri = pokeData.abilities[0].resource_uri;
       //   return $http.get(baseUrl + uri);
@@ -38,7 +49,7 @@ app.service("teaData", ['$http', function($http) {
       // }).then(function(spriteData){
       //   pokeData.sprites[0] = spriteData.data;
       //   return pokeData;
-      });
+
 
         // Now we have a problem.  How do we signal that this
         // data is done?
