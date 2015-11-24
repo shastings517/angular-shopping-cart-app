@@ -1,4 +1,5 @@
 app.controller('HomeController', ['$scope', 'teaData', function($scope, teaData) {
+  $scope.view = {};
   teaData.getData().then(function(itemData){
     $scope.itemData = itemData;
     console.log(itemData);

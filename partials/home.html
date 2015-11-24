@@ -4,7 +4,7 @@
 
   <span>
     Search by category:
-    <select name="Sort by Price" id="sortPrice" >
+    <select name="" id="" ng-model="category">
       <option value=""></option>
       <option value="{{item}}" ng-repeat="item in categoryArr">{{item}}</option>
     </select>
@@ -13,18 +13,23 @@
     Search by name:
     <input type="text" ng-model="searchText">
   </span>
+  <span class="btn btn-danger pull-right"><strong>Checkout&nbsp;</strong>| Bag: Empty!</span>
   <table class="table table-bordered">
     <thead>
       <th class="col-xs-2">Tea</th>
       <th class="col-xs-10">Information
         <label for="sortPrice" id="sortLabel">Sort by Price</label>
-        <select class="pull-right" name="Sort by Price" id="sortPrice">
-          <option value="highest">Highest</option>
-          <option value="lowest">Lowest</option>
+        <select class="pull-right" name="Sort by Price" id="sortPrice" ng-model="sortReverse">
+          <!-- <option value=""></option> -->
+          <option value="true">Highest</option>
+          <option value="">Lowest</option>
         </select>
       </th>
     </thead>
-    <tr ng-repeat="item in itemData | filter:searchText">
+    <!-- <h3>sortType: {{view.sortType}}</h3
+    <h3>sortReverse: {{view.sortReverse}}</h3> -->
+
+    <tr ng-repeat="item in itemData | filter:searchText | filter:category | orderBy:'price':sortReverse">
       <td><img ng-src="{{item.imageUrl}}" alt=""></td>
       <td>
         <div class="row">
