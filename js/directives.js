@@ -1,11 +1,12 @@
-app.directive('sshTeaDataArray', function() {
-  return {
-    scope: {
-      itemData: '=teaData',
-    },
-    templateUrl: './partials/home.html'
-  };
-});
+// app.directive('sshTeaDataArray', function() {
+//   return {
+//     // scope: {
+//     //   itemData: '=teaData',
+      
+//     // },
+//     // templateUrl: './partials/home.html'
+//   };
+// });
 // console.log(itemData);
 
 // app.directive('gsPokemonStats', function() {

@@ -4,9 +4,9 @@
 
   <span>
     Search by category:
-    <select name="Sort by Price" id="sortPrice" ng-repeat="item in categoryArr">
+    <select name="Sort by Price" id="sortPrice" >
       <option value=""></option>
-      <option value="">Lowest</option>
+      <option value="{{item}}" ng-repeat="item in categoryArr">{{item}}</option>
     </select>
   </span>
   <span>

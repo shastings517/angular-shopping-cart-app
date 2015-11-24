@@ -1,34 +1,52 @@
 app.service("teaData", ['$http', function($http) {
 
-  // var baseUrl = 'http://localhost:8000/items.json/';
+  var itemData;
+  var categoryArr = [];
 
-  // A number for the pokemon id needs to be added to the
-  // this path.
-  // var pokemonInfoPath = 'api/v1/pokemon/';
   return {
     getData: function() {
-      var itemData;
-      var categoryArr = [];
       // console.log(itemData)
       // var fullUrl = baseUrl;
       return $http.get('http://localhost:8000/items.json').then(function(itemData) {
         itemData = itemData.data;
         console.log(itemData);
         return itemData;
-      }).then(function(itemData){
+      });
+    },
+
+    getCatArr: function(){
+      return $http.get('http://localhost:8000/items.json').then(function(itemData) {
+        itemData = itemData.data;
+
         for(var i=0; i<itemData.length; i++){
           for(var j=0; j<itemData[i].categories.length; j++){
-            
             categoryArr.push(itemData[i].categories[j]);
-            console.log(categoryArr);
           }
         }
-        uniqueArray = categoryArr.filter(function(item, pos) {
+        uniqueArr = categoryArr.filter(function(item, pos) {
           return categoryArr.indexOf(item) == pos;
         });
-        return uniqueArray;
-        
+        return uniqueArr;
       });
+    }
+
+
+  };
+}]);
+      // .then(function(itemData){
+      //   for(var i=0; i<itemData.length; i++){
+      //     for(var j=0; j<itemData[i].categories.length; j++){
+            
+      //       categoryArr.push(itemData[i].categories[j]);
+      //       console.log(categoryArr);
+      //     }
+      //   }
+      //   uniqueArray = categoryArr.filter(function(item, pos) {
+      //     return categoryArr.indexOf(item) == pos;
+      //   });
+      //   return uniqueArray;
+        
+      // });
         // itemData.categories = categoryData.data;
 
         
@@ -54,8 +72,8 @@ app.service("teaData", ['$http', function($http) {
         // Now we have a problem.  How do we signal that this
         // data is done?
 
-    }
-  };
-}]);
+    
+  
+
 
   
